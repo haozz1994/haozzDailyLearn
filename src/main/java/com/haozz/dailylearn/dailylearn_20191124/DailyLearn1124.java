@@ -18,6 +18,7 @@ public class DailyLearn1124 {
 
     public static void main(String[] args) {
         //Predicate
+        //list.stream().filter(Predicate ...), filter中接收的是Predicate接口
         Predicate<String> predicate1 = new Predicate() {
             @Override
             public boolean test(Object o) {
@@ -56,6 +57,7 @@ public class DailyLearn1124 {
 
 
         //Function
+        // list.stream().map(Function ...), map中接收的就是Function接口
         Function<String, Integer> function1 = new Function<String, Integer>() {
             @Override
             public Integer apply(String s) {

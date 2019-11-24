@@ -11,7 +11,7 @@ import java.util.List;
  **/
 public class App2 {
     public static void test(MyInterface<String, List> inter) {
-        List<String> list = inter.strategy("hello", new ArrayList());
+        List<String> list = inter.strategy( "hello", new ArrayList());
         System.out.println(list);
     }
 
