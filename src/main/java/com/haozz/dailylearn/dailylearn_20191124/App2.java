@@ -5,14 +5,15 @@ import java.util.List;
 
 /**
  * lambda类型检查
+ *
  * @author
  * @date 2019/11/24 11:25
  **/
 public class App2 {
-        public static void test(MyInterface<String, List> inter){
-            List<String> list = inter.strategy("hello", new ArrayList());
-            System.out.println(list);
-        }
+    public static void test(MyInterface<String, List> inter) {
+        List<String> list = inter.strategy("hello", new ArrayList());
+        System.out.println(list);
+    }
 
     public static void main(String[] args) {
         test(new MyInterface<String, List>() {
@@ -30,6 +31,16 @@ public class App2 {
             return y;
         });
     }
+
+
+    //  命令行中
+    //  javac App.java  对java文件进行编译
+    //  javap -p App.class  查看编译后的class文件
+
+    //  lambda编译后  会生成一个私有的main方法
+    /**
+     *  private static void lambda&main&0(java.lang.String)
+     */
 
 }
 
