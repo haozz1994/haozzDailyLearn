@@ -86,7 +86,12 @@ public class DailyLearn1124 {
      * Function 接收参数T，返回R
      * Supplier 不接受参数，get()获取指定类型的对象
      *
+     */
+
+    /**
      *
+     * lambda基本语法
+     * [接口声明] = (参数) -> {执行代码块};
      *
      */
 
