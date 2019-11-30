@@ -6,5 +6,9 @@ package com.haozz.dailylearn.dailylearn_20191130;
  **/
 public class DailyLearn1130 {
 
+    public static void main(String[] args) {
+
+    }
+
 
 }
