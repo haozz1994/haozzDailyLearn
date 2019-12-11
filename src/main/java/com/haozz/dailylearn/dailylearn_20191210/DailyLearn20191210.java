@@ -15,17 +15,12 @@ public class DailyLearn20191210 {
         sw.start("step1:test1");
         sw.stop();
 
-
         sw.start("step2:test2");
         sw.stop();
-
 
         sw.start("step3:test3");
         sw.stop();
 
-
         System.out.println(sw.prettyPrint());
-
-
     }
 }
