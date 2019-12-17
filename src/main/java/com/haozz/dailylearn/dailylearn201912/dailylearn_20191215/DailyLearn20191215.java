@@ -1,4 +1,4 @@
-package com.haozz.dailylearn.dailylearn_20191215;
+package com.haozz.dailylearn.dailylearn201912.dailylearn_20191215;
 
 /**
  * leetcode   3的幂

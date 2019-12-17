@@ -1,4 +1,4 @@
-package com.haozz.dailylearn.dailylearn_20191207;
+package com.haozz.dailylearn.dailylearn201912.dailylearn_20191207;
 
 import java.util.LinkedList;
 import java.util.Queue;
