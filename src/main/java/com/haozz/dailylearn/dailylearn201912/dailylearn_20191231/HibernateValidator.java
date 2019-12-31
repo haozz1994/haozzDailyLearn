@@ -19,7 +19,10 @@ import java.util.Set;
  */
 public class HibernateValidator {
     /**
-     * 开启快速失败模式 failFast (true)
+     * 开启快速失败模式 failFast (true)  这里的fail-fast并不是ConcurrentModificationException的fail-fast
+     *
+     * true-快速失败模式：有一项校验失败就返回
+     * false-普通模式：校验完所有属性再返回
      */
     private static Validator validator = Validation.byProvider(org.hibernate.validator.HibernateValidator.class)
             .configure().failFast(false).buildValidatorFactory().getValidator();
