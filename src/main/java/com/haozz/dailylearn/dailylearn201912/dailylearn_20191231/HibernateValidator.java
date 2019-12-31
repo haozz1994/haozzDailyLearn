@@ -12,6 +12,8 @@ import java.util.Set;
 /**
  * 基于HibernateValidator的参数验证器
  *
+ * https://www.cnblogs.com/mr-yang-localhost/p/7812038.html
+ *
  * @author haozhezhe@yunquna.com
  * @date 14:08 2019/12/31
  */
