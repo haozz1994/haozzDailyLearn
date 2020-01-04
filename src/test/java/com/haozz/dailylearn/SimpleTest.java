@@ -1,5 +1,6 @@
 package com.haozz.dailylearn;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.haozz.dailylearn.mp.entity.User;
 import com.haozz.dailylearn.mp.mapper.UserMapper;
 import org.junit.jupiter.api.Test;
@@ -41,4 +42,21 @@ public class SimpleTest {
         System.out.println("==============" + list);
 
     }
+
+
+    @Test
+    public void testByWrapper() {
+        QueryWrapper<User> wrapper = new QueryWrapper<>();
+        wrapper.like("name", "B").lt("age", 35);// name like '%B%' and age <35;
+
+//        wrapper.likeLeft("name","N").or().between("age",20,40).orderByAsc("age");//name like '%N' or age between 20 and 40 order age asc;
+
+
+        List<User> users = userMapper.selectList(wrapper);
+
+        System.out.println(users);
+
+    }
+
+
 }
