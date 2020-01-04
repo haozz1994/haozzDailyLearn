@@ -24,7 +24,9 @@ public class ExecutorManager {
                 System.out.println(e.fillInStackTrace());
             } finally {
 
-                //此处，线程执行完后需要进行ThreadLocal的清楚，否则线程池中线程复用，会拿到其他线程的ThreadLocal的值
+                //此处，线程执行完后需要进行ThreadLocal的清除，否则线程池中线程复用，会拿到其他线程的ThreadLocal的值
+
+                //ThreadLocalHolder.remove();
             }
         });
     }
@@ -43,7 +45,7 @@ public class ExecutorManager {
 
 
         //每次项目启动，第一个线程进来，ThreadLocal里必为null，后面开始每个线程会设置一个随机值
-        //多次调用，根据打印的ThreadLocal值可以发现，线程的复用是轮询的
+        //多次调用，根据打印的ThreadLocal值可以发现，线程的复用不一定是轮询的
 
 
         //ThreadLocal的使用都用于session存储，参考https://www.cnblogs.com/yxysuanfa/p/7125761.html
