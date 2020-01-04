@@ -23,11 +23,11 @@ public class SimpleTest {
     private UserMapper userMapper;
 
     @Test
-    public void testMyBatisPlus(){
+    public void testMyBatisPlus() {
 
         List<User> list = userMapper.selectList(null);
         System.out.println(list);
-        Assert.isTrue(list.size() == 1 , "查询失败");
+        Assert.isTrue(list.size() == 1, "查询失败");
 
     }
 }
