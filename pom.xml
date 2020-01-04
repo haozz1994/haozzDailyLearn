@@ -21,6 +21,10 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
@@ -44,6 +48,13 @@
                     <artifactId>junit-vintage-engine</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+
+        <!--mybatis-plusa'p'pl-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>3.3.0</version>
         </dependency>
     </dependencies>
 
