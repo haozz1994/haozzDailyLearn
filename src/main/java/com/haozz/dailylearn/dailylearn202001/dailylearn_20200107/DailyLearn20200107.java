@@ -10,5 +10,7 @@ public class DailyLearn20200107 {
         String a = null;
         a += "aaa";
         System.out.println(a);
+
+        //nullaaa
     }
 }
