@@ -39,7 +39,7 @@ public class MD5Util {
         return result;
     }
 
-    public String genetateBusinessKey() {
+    public static String genetateBusinessKey() {
         StringBuilder sb = new StringBuilder();
         sb.append("a");
         sb.append("ab");
@@ -50,5 +50,9 @@ public class MD5Util {
             System.out.println(e.getMessage());
         }
         return null;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(genetateBusinessKey());
     }
 }
