@@ -23,7 +23,7 @@ package com.haozz.dailylearn.dailylearn202001.dailylearn_20200109;
 public class DailyLearn20200109 {
 
     public static int findLengthOfLCIS(int[] nums) {
-        if(nums.length == 0){
+        if (nums.length == 0) {
             return 0;
         }
 
@@ -39,12 +39,12 @@ public class DailyLearn20200109 {
                 tempResult++;
 
                 //如果临时结果大于最终结果，把临时结果赋值给最终结果
-                if(tempResult > result){
+                if (tempResult > result) {
                     result = tempResult;
                 }
             } else {
                 //遇到不递增的，把临时结果赋值给最终结果
-                if(tempResult > result){
+                if (tempResult > result) {
                     result = tempResult;
                 }
                 tempResult = 1;
@@ -54,6 +54,30 @@ public class DailyLearn20200109 {
     }
 
     public static void main(String[] args) {
-        System.out.println(findLengthOfLCIS(new int [] {3,0,6,2,4,7,0,0}));
+        System.out.println(findLengthOfLCIS(new int[]{3, 0, 6, 2, 4, 7, 0, 0}));
+    }
+
+
+    /**
+     * 评论区的解法，思路和上面一样，但是更加精简
+     *
+     * @param nums
+     * @return
+     */
+    public int findLengthOfLCIS1(int[] nums) {
+        if (nums.length <= 1) {
+            return nums.length;
+        }
+        int ans = 1;
+        int count = 1;
+        for (int i = 0; i < nums.length - 1; i++) {
+            if (nums[i + 1] > nums[i]) {
+                count++;
+            } else {
+                count = 1;
+            }
+            ans = count > ans ? count : ans;
+        }
+        return ans;
     }
 }
