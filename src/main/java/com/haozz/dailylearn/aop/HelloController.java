@@ -18,4 +18,10 @@ public class HelloController {
         return "hello: " + name;
     }
 
+
+    @RequestMapping("/say")
+    public String saysHello(@RequestParam String name) {
+        return "hello: " + name;
+    }
+
 }
