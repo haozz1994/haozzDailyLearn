@@ -1,4 +1,4 @@
-package com.haozz.dailylearn.dailylearn202003.dailylearn_20200323;
+package com.haozz.dailylearn.dailylearndetail.dailylearn202003.dailylearn_20200323;
 
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
