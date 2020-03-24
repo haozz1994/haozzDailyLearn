@@ -11,11 +11,11 @@ import java.util.Arrays;
  */
 public class ReflectDemo {
 
-    public void methodA(){
+    public void methodA() {
 
     }
 
-    private void methodB(){
+    private void methodB() {
 
     }
 
