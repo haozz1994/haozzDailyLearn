@@ -49,9 +49,4 @@ public class SimpleDateFormatTest {
             });
         }
     }
-
-    /**
-     *
-     *
-     */
 }
