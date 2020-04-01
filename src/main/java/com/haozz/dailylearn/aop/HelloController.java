@@ -19,7 +19,7 @@ public class HelloController {
     }
 
 
-    @RequestMapping("/say")
+    @RequestMapping("/says")
     public String saysHello(@RequestParam String name) {
         return "hello: " + name;
     }
