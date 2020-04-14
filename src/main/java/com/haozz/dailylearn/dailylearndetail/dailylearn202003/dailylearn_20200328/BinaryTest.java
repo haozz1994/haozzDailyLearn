@@ -1,5 +1,7 @@
 package com.haozz.dailylearn.dailylearndetail.dailylearn202003.dailylearn_20200328;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 /**
  * java中的各种进制
  *
