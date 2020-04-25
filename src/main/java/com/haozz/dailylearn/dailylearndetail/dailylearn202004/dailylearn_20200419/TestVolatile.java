@@ -59,6 +59,10 @@ public class TestVolatile {
      *
      *
      *
+     * voaltile只能保证内存可见性，不能保证原子性
+     *
+     *
+     *
      */
 
 }
