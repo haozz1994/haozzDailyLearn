@@ -6,6 +6,7 @@ import java.util.concurrent.Executors;
 
 /**
  * @author: haozz
+ * countDownLatch
  * @date: 2020/5/7 23:39
  */
 public class JoinCountDownLatch2 {
