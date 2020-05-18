@@ -9,6 +9,11 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class CountRateLimiterDemo {
 
+    /**
+     * 使用AomicInteger来进行统计当前正在并发执行的次数，如果超过域值就简单粗暴的直接响应给用户，说明系统繁忙，请稍后再试或其它跟业务相关的信息。
+     *
+     * 弊端：使用 AomicInteger 简单粗暴超过域值就拒绝请求，可能只是瞬时的请求量高，也会拒绝请求
+     */
     private static AtomicInteger count = new AtomicInteger(0);
 
     public static void exec() {
