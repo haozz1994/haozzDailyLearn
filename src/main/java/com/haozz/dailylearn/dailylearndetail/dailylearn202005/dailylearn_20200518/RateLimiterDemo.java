@@ -15,6 +15,7 @@ public class RateLimiterDemo {
     public static void exec() {
         limiter.acquire(1);
         try {
+            // 处理核心逻辑
             TimeUnit.SECONDS.sleep(1);
         } catch (Exception e) {
             e.printStackTrace();
