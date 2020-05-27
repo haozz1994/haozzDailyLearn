@@ -5,7 +5,7 @@ package com.haozz.dailylearn.dailylearndetail.dailylearn202005.dailylearn_202005
  *
  *
  */
-public class VolatileTest {
+public class VolatileTestSort {
 
 
     public volatile static int x, y = 0;
@@ -14,11 +14,11 @@ public class VolatileTest {
     public static void main(String[] args) throws InterruptedException {
 
         while (true) {
-            reStore();
+            reSort();
         }
     }
 
-    public static void reStore() throws InterruptedException {
+    public static void reSort() throws InterruptedException {
 
         Thread aThread = new Thread(new Runnable() {
             @Override
