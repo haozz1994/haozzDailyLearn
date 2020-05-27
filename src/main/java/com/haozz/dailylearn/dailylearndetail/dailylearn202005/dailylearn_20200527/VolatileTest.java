@@ -1,5 +1,8 @@
 package com.haozz.dailylearn.dailylearndetail.dailylearn202005.dailylearn_20200527;
 
+/**
+ * volatile禁止指令重排
+ */
 public class VolatileTest {
 
 
