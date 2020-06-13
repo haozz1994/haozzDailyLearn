@@ -1,5 +1,12 @@
 package com.haozz.dailylearn.dailylearndetail.dailylearn202006.dailylearn_20200613;
 
+/**
+ * 执行结果：
+ * ****** load TestDynamicLoad ******
+ * ****** load A ******
+ * ****** initial A ******
+ * ****** load test ******
+ */
 public class TestDynamicLoad {
 
     static {
