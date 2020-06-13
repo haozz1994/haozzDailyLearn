@@ -6,6 +6,13 @@ package com.haozz.dailylearn.dailylearndetail.dailylearn202006.dailylearn_202006
  * ****** load A ******
  * ****** initial A ******
  * ****** load test ******
+ *
+ *
+ *
+ * 主类在运行过程中如果使用到其它类，会逐步加载这些类。 jar包或war包里的类不是一次性全部加载的，是使用到时才加载。
+ *
+ *
+ * 类加载过程有如下几步： 加载 >> 验证 >> 准备 >> 解析 >> 初始化 >> 使用 >> 卸载
  */
 public class TestDynamicLoad {
 
