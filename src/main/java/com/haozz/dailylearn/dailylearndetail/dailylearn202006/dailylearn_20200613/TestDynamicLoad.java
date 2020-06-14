@@ -1,5 +1,7 @@
 package com.haozz.dailylearn.dailylearndetail.dailylearn202006.dailylearn_20200613;
 
+import java.util.Objects;
+
 /**
  * 执行结果：
  * ****** load TestDynamicLoad ******
@@ -21,10 +23,14 @@ public class TestDynamicLoad {
     }
 
     public static void main(String[] args) {
-        new A();
+        A a = new A();
         System.out.println("****** load test ******");
         // B不会被加载，除非这里执行new B()
         B b = null;
+
+
+        System.out.println("======");
+        System.out.println(Objects.equals(a, b));
     }
 }
 
