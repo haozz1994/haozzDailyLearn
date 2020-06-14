@@ -39,7 +39,7 @@ public class App2 {
 
     //  lambda编译后  会生成一个私有的main方法
     /**
-     *  private static void lambda&main&0(java.lang.String)
+     *  private static void lambda&main&0(java.String)
      */
 
 }
