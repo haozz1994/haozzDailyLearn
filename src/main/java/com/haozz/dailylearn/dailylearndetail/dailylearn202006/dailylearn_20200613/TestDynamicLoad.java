@@ -28,6 +28,12 @@ public class TestDynamicLoad {
     }
 }
 
+
+/**
+ * static代码块会先于构造方法执行，因为static静态代码块实际上是在类加载的解析过程中执行的，而构造方法是在对象示例化的时候执行的
+ *
+ * 对于B b = null; 是不会加载B的
+ */
 class A {
     static {
         System.out.println("****** load A ******");
