@@ -46,7 +46,7 @@ public class MyClassLoaderTest {
         System.out.println(clazz.getClassLoader().getClass().getName());
 
         /**
-         * 这里自定义的classLoader实际上默认父类是AppClassLoader
+         * 自定义的classLoader的parent属性默认是AppClassLoader
          *
          * 如果说加载的这个类已经在当前的classpath路径下了，那么其类加载器就是AppClassLoader，因为是遵循双亲委派机制的
          *
