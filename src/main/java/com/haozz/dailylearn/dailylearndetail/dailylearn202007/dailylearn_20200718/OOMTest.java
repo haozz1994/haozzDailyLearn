@@ -37,7 +37,7 @@ public class OOMTest {
     }
 
     /**
-     * 发生OOM之后，会导出堆的快照信息到指定路径下，文件格式为.hprof，
+     * 发生OOM之后，会导出堆的快照信息到指定路径下，文件格式为.hprof或.dump，
      * 然后在jvisualvm里面装入该文件，就可以看到生成了大量的User类导致内存不足
      */
 }
