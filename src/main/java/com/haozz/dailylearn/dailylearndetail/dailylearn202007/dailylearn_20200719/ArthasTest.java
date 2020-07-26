@@ -3,6 +3,9 @@ package com.haozz.dailylearn.dailylearndetail.dailylearn202007.dailylearn_202007
 import java.util.HashSet;
 
 /**
+ * Arthas测试类
+ * 在arthas安装包下直接java -jar arthas.jar即可启动arthas
+ *
  * @author haozhezhe@yunquna.com
  * @date 15:15 2020-07-19
  */
