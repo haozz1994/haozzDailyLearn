@@ -1,6 +1,8 @@
 package com.haozz.dailylearn.dailylearndetail.dailylearn202007.dailylearn_20200726;
 
 /**
+ * 递归实现斐波那契数列
+ *
  * @author haozhezhe@yunquna.com
  * @date 14:41 2020-07-26
  */
@@ -13,9 +15,7 @@ public class Fobernaci {
         if (i == 1 || i == 2) {
             return 1;
         }
-
         return calculator(i-2) + calculator(i-1);
-
     }
 
     public static void main(String[] args) {
