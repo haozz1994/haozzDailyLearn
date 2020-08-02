@@ -17,10 +17,19 @@ public class RestDemo {
     public void restDemo() {
         String url = "";
 
+        System.out.println(System.getProperties());
+
         try {
             restTemplate.exchange(url, HttpMethod.POST, new HttpEntity<>(null, null), String.class);
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+
+    public static void main(String[] args) {
+        System.out.println(System.getProperties());
+        System.out.println("============");
+        System.out.println(System.getenv());
     }
 }
