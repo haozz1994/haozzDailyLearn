@@ -39,15 +39,16 @@ public class LockDemo {
 
     /**
      * 更新库存(使用悲观锁)   for update
+     *
      * @param productId
      * @return
      */
-    public boolean updateStock(Long productId){
+    public boolean updateStock(Long productId) {
         //先锁定商品库存记录
         ProductStock product = query("SELECT * FROM tb_product_stock WHERE product_id=#{productId} FOR UPDATE", productId);
         if (product.getNumber() > 0) {
             int updateCnt = update("UPDATE tb_product_stock SET number=number-1 WHERE product_id=#{productId}", productId);
-            if(updateCnt > 0){    //更新库存成功
+            if (updateCnt > 0) {    //更新库存成功
                 return true;
             }
         }
@@ -57,22 +58,34 @@ public class LockDemo {
     /**
      * 下单减库存(乐观锁)  这个例子不是很恰当，用了库存number本身来当版本号用
      * 使用乐观锁更新库存的时候不加锁，当提交更新时需要判断数据是否已经被修改（AND number=#{number}），只有在 number等于上一次查询到的number时 才提交更新。
+     *
      * @param productId
      * @return
      */
-    public boolean updateStock1(Long productId){
+    public boolean updateStock1(Long productId) {
         int updateCnt = 0;
         while (updateCnt == 0) {
             ProductStock product = query("SELECT * FROM tb_product_stock WHERE product_id=#{productId}", productId);
             if (product.getNumber() > 0) {
                 updateCnt = update("UPDATE tb_product_stock SET number=number-1 WHERE product_id=#{productId} AND number=#{number}", productId, product.getNumber());
-                if(updateCnt > 0){    //更新库存成功
+                if (updateCnt > 0) {    //更新库存成功
                     return true;
                 }
             } else {    //卖完啦
                 return false;
             }
         }
+
+        /**
+         * SELECT number, version FROM tb_product_stock WHERE product_id=#{productId}
+         *
+         *
+         * UPDATE tb_product_stock SET number=number-1 WHERE product_id=#{productId} AND version=#{version}
+         *
+         * 当这里有两个线程A和B同时进来的时候，然后同时执行了query方法，假如查到的version都为1，
+         * 然后线程A执行了update方法，修改金额，并且修改version = 2
+         * 线程B执行update的时候，versiony已经不是1了，所以where条件生效，会更新失败（也不算是失败，只是影响行数为0），然后在while之后重试；
+         */
         return false;
     }
 
