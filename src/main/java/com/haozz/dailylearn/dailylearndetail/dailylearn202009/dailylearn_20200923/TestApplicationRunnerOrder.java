@@ -7,15 +7,16 @@ import org.springframework.stereotype.Component;
 
 /**
  * @author haozhezhe@yunquna.com
- * @date 16:00 2020-09-23
+ * @date 16:02 2020-09-23
  */
 @Component
-@Order(1)
-public class TestApplicationRunner implements ApplicationRunner {
-
-
+@Order(2)
+public class TestApplicationRunnerOrder implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        System.out.println("the application is running  ===  1");
+
+        System.out.println(args.getOptionValues("testParam"));
+
+        System.out.println("the application is running  ===  2");
     }
 }
