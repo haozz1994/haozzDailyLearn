@@ -122,6 +122,18 @@
                     2.1：如果dependencies里的dependency自己没有声明version元素，那么maven就会到dependencyManagement里面去找有没有对该artifactId和groupId进行过版本声明，如果有，就继承它，如果没有就会报错，告诉你必须为dependency声明一个version
                     2.2：如果dependencies中的dependency声明了version，那么无论dependencyManagement中有无对该jar的version声明，都以dependency里的version为准。
       -->
+<!--        <dependencies>-->
+<!--            <dependency>-->
+<!--                <groupId>com.yqn.product.search</groupId>-->
+<!--                <artifactId>product-search-api</artifactId>-->
+<!--                <version>${product-search-api.version}</version>-->
+<!--            </dependency>-->
+<!--            <dependency>-->
+<!--                <groupId>com.yqn.product.search</groupId>-->
+<!--                <artifactId>product-search-service</artifactId>-->
+<!--                <version>${product-search-service.version}</version>-->
+<!--            </dependency>-->
+<!--        </dependencies>-->
     </dependencyManagement>
 
     <build>
