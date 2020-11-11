@@ -14,9 +14,16 @@ import java.util.stream.Collectors;
 @Component
 public class DemoUtil {
 
+    public void demo() {
+
+        List<UserBO> list = new ArrayList();
+        Map<Long, UserVO> userVOMap = assembleUser(list, UserBO::getUserId);
+    }
+
 
     /**
-     * 这个返回值类型为什么是这样写
+     * 这个返回值类型为什么是这样写:<T> Map<Long, UserVO>
+     *     其实返回的是Map<Long, UserVO>，为什么前面要加<T>，这个不加确实会报错
      */
     public <T> Map<Long, UserVO> assembleUser(Collection<T> collection, Function<T, Long>... mappers) {
 
