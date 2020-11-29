@@ -16,8 +16,17 @@ public class ArthasDemo {
     public static void main(String[] args) throws NoSuchAlgorithmException {
 
 
+        /**
+         * 这种初始化方式，虽然是sonar推荐的，但是在计算随机数的时候，会获取当前服务器的属性，如果获取不到就会阻塞，然后导致jvm阻塞
+         *
+         * 所以会出现相同的代码，在不同的环境下，有的可以正常运行，有的会报错
+         */
         SecureRandom random = SecureRandom.getInstanceStrong();
 
+
+        /**
+         * new的方式初始化   会指定seed = 0
+         */
         SecureRandom secureRandom = new SecureRandom();
 
 //        testMethod1();
