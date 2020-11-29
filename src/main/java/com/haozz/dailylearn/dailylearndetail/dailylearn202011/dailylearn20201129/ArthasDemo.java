@@ -2,6 +2,9 @@ package com.haozz.dailylearn.dailylearndetail.dailylearn202011.dailylearn2020112
 
 import org.springframework.stereotype.Component;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+
 /**
  * @author haozhezhe@yunquna.com
  * @date 22:30 2020-11-29
@@ -10,14 +13,18 @@ import org.springframework.stereotype.Component;
 public class ArthasDemo {
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NoSuchAlgorithmException {
 
 
-        testMethod1();
+        SecureRandom random = SecureRandom.getInstanceStrong();
 
-        int a = 1/0;
+        SecureRandom secureRandom = new SecureRandom();
 
-        testMethod1();
+//        testMethod1();
+//
+//        int a = 1/0;
+//
+//        testMethod1();
 
     }
 
