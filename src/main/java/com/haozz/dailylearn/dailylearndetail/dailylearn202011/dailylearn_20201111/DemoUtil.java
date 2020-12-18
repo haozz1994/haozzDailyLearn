@@ -24,6 +24,8 @@ public class DemoUtil {
     /**
      * 这个返回值类型为什么是这样写:<T> Map<Long, UserVO>
      *     其实返回的是Map<Long, UserVO>，为什么前面要加<T>，这个不加确实会报错
+     *
+     *     解答：  这个<T>只是为了标识入参中的Collection中的泛型T的类型，当入参中有泛型的时候，就要在方法返回值的前面这样声明，应该是固定写法
      */
     public <T> Map<Long, UserVO> assembleUser(Collection<T> collection, Function<T, Long>... mappers) {
 
