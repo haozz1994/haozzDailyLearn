@@ -1,8 +1,10 @@
 package com.haozz.dailylearn.dailylearndetail.dailylearn202012.dailylearn_20201220;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 
 import javax.annotation.Resource;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 分布式锁
@@ -19,6 +21,10 @@ public class DeductStockDemo {
 
     @Resource
     private StringRedisTemplate stringRedisTemplate;
+
+//    @Resource
+//    private RedissonClient redissonClient;
+
 
     /**
      * 示例方法：扣减库存
@@ -91,6 +97,9 @@ public class DeductStockDemo {
      */
     public String deductStock2() {
 
+        // 针对某一个商品加锁
+        String lockKey = "product_001";
+
         try {
             /**
              * 这句相当于jedis.setnx(key, value)， 它在redis的底层是单线程的，
@@ -98,7 +107,13 @@ public class DeductStockDemo {
              * 相当于这里只有一个线程可以拿到锁
              * 这就是分布式锁的含义
              */
-            Boolean lock = stringRedisTemplate.opsForValue().setIfAbsent("lock", "1");
+//            Boolean lock = stringRedisTemplate.opsForValue().setIfAbsent(lockKey, "1");
+//            stringRedisTemplate.expire(lockKey, 10, TimeUnit.SECONDS);
+
+            // 但是上面这两句不是原子的，第一句执行之后如果宕机了，那么第二句执行不了，key就永远在redis中了
+            // 可以使用stringRedisTemplate.opsForValue().setIfAbsent(lockKey, "1", 10, TimeUnit.SECONDS);  这一整句是一个原子操作
+            Boolean lock = stringRedisTemplate.opsForValue().setIfAbsent(lockKey, "1", 10, TimeUnit.SECONDS);
+
 
             // 没有获取到锁
             if (!lock) {
@@ -126,12 +141,20 @@ public class DeductStockDemo {
         } finally {
             // finally 中解锁
             // 执行完毕需要释放锁，正确的释放锁，需要校验是不是当前线程持有锁
-            stringRedisTemplate.delete("lock");
+            stringRedisTemplate.delete(lockKey);
         }
 
 
         return "end";
 
     }
+
+
+    //  引入redission
+    //<dependency>
+    //            <groupId>org.redisson</groupId>
+    //            <artifactId>redisson-spring-boot-starter</artifactId>
+    //            <version>3.10.6</version>
+    //        </dependency>
 
 }
