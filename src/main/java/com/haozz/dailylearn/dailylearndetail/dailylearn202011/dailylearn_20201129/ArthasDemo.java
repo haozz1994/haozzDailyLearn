@@ -1,4 +1,4 @@
-package com.haozz.dailylearn.dailylearndetail.dailylearn202011.dailylearn20201129;
+package com.haozz.dailylearn.dailylearndetail.dailylearn202011.dailylearn_20201129;
 
 import org.springframework.stereotype.Component;
 
