@@ -11,6 +11,8 @@ import io.reactivex.schedulers.Schedulers;
 /**
  * Java响应式编程 RxJava
  * https://ke.qq.com/course/429389?taid=3506376941145421
+ *
+ * https://juejin.cn/post/6844903617124630535
  * <p>
  * <p>
  * 和Mq很像，但是MQ是消费端拉的，响应式编程是被观察者主动推的
