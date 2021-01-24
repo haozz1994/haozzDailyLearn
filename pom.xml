@@ -127,8 +127,11 @@
             <version>2.2.10</version>
         </dependency>
 
-
-
+        <dependency>
+            <groupId>org.redisson</groupId>
+            <artifactId>redisson-spring-boot-starter</artifactId>
+            <version>3.10.6</version>
+        </dependency>
 
 
     </dependencies>
@@ -143,18 +146,18 @@
                     2.2：如果dependencies中的dependency声明了version，那么无论dependencyManagement中有无对该jar的version声明，都以dependency里的version为准。
 
         -->
-<!--        <dependencies>-->
-<!--            <dependency>-->
-<!--                <groupId>com.yqn.product.search</groupId>-->
-<!--                <artifactId>product-search-api</artifactId>-->
-<!--                <version>${product-search-api.version}</version>-->
-<!--            </dependency>-->
-<!--            <dependency>-->
-<!--                <groupId>com.yqn.product.search</groupId>-->
-<!--                <artifactId>product-search-service</artifactId>-->
-<!--                <version>${product-search-service.version}</version>-->
-<!--            </dependency>-->
-<!--        </dependencies>-->
+        <!--        <dependencies>-->
+        <!--            <dependency>-->
+        <!--                <groupId>com.yqn.product.search</groupId>-->
+        <!--                <artifactId>product-search-api</artifactId>-->
+        <!--                <version>${product-search-api.version}</version>-->
+        <!--            </dependency>-->
+        <!--            <dependency>-->
+        <!--                <groupId>com.yqn.product.search</groupId>-->
+        <!--                <artifactId>product-search-service</artifactId>-->
+        <!--                <version>${product-search-service.version}</version>-->
+        <!--            </dependency>-->
+        <!--        </dependencies>-->
     </dependencyManagement>
 
     <build>

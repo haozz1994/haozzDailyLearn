@@ -1,5 +1,7 @@
 package com.haozz.dailylearn.dailylearndetail.dailylearn202012.dailylearn_20201220;
 
+import org.redisson.Redisson;
+import org.redisson.api.RLock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 
@@ -149,6 +151,9 @@ public class DeductStockDemo {
 
     }
 
+    @Autowired
+    private Redisson redisson;
+
 
     //  引入redission
     //<dependency>
@@ -156,5 +161,33 @@ public class DeductStockDemo {
     //            <artifactId>redisson-spring-boot-starter</artifactId>
     //            <version>3.10.6</version>
     //        </dependency>
+
+
+
+    // redisson内部还有watchdog机制
+    public String deductStock3() {
+
+        // 针对某一个商品加锁
+        String lockKey = "product_001";
+
+        // 首先获取Redisson锁对象，这时候还没加锁
+        RLock redissonLock = redisson.getLock(lockKey);
+
+        try {
+            redissonLock.lock();   // 加锁，底层相当于  jedis.setnx(key, value)
+            int stock = Integer.parseInt(stringRedisTemplate.opsForValue().get("stock"));
+            if (stock > 0) {
+                int realStock = stock - 1;
+                stringRedisTemplate.opsForValue().set("stock", realStock + "");
+                System.out.println("扣减成功，剩余库存" + realStock);
+            } else {
+                System.out.println("扣减失败，库存不足");
+            }
+
+        } finally {
+            redissonLock.unlock();
+        }
+        return "end";
+    }
 
 }
