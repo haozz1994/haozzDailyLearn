@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.lang.annotation.ElementType;
+import java.lang.reflect.Field;
 
 /**
  * @author haozhezhe@yunquna.com
@@ -13,7 +14,7 @@ import java.lang.annotation.ElementType;
  */
 public class TestReflection {
 
-    public static void main(String[] args) throws ClassNotFoundException {
+    public static void main(String[] args) throws ClassNotFoundException, NoSuchFieldException, IllegalAccessException {
 
         Class c1 = Class.forName("com.haozz.dailylearn.dailylearndetail.dailylearn202103.dailylearn_20210314.User");
         System.out.println(c1.hashCode());
@@ -74,6 +75,19 @@ public class TestReflection {
         System.out.println(c17);
         System.out.println(c18);
         System.out.println(c19);
+
+
+        System.out.println("================================================================================================");
+
+
+        User u21 = new User();
+        u21.setName("zzz");
+        System.out.println(u21);
+
+        Class c21 = u21.getClass();
+        Field name = c21.getDeclaredField("name");
+        name.set(u21, "lll");
+        System.out.println(u21);
 
 
     }
