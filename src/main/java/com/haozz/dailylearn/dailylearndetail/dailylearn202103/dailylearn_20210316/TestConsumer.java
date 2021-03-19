@@ -20,7 +20,7 @@ public class TestConsumer {
 
 
         TestConsumer testConsumer = new TestConsumer();
-        Consumer<String> set = testConsumer::set;
+        Consumer<String> set = name -> testConsumer.set(name);
 
         System.out.println("=====");
         System.out.println("=====");
