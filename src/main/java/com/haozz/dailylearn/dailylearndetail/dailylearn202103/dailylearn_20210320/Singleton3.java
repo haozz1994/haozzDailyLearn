@@ -11,6 +11,10 @@ public class Singleton3 {
 
 
     /**
+     * 我们先声明了一个初始值为 null 的 instance 变量，当需要使用时判断此变量是否已被初始化，没有初始化的话才 new 一个实例出来。
+     * 就好比电工在修理灯泡时，开始比较偷懒，什么工具都不拿，当发现需要使用螺丝刀时，才把螺丝刀拿出来。当需要用钳子时，再把钳子拿出来。就像一个不到万不得已不会行动的懒汉，所以称之为懒汉式。
+     */
+    /**
      * 单例模式 懒汉式
      */
     private Singleton3() {
@@ -82,8 +86,29 @@ public class Singleton3 {
      * 其他点：
      *
      * 单例应该是无状态的
-     * 静态内部类解决重排序问题，classLoader机制
+     * 静态内部类解决重排序问题，classLoader机制   https://zhuanlan.zhihu.com/p/85624457
      * 反射打破单例
+     */
+
+
+    /**
+     *
+     * 静态内部类方式创建单例
+     *
+     *
+     * public class Singleton {
+     *
+     *     private static class SingletonHolder {
+     *         public static Singleton instance = new Singleton();
+     *     }
+     *
+     *     private Singleton() {
+     *     }
+     *
+     *     public static Singleton getInstance() {
+     *         return SingletonHolder.instance;
+     *     }
+     * }
      */
 
 
