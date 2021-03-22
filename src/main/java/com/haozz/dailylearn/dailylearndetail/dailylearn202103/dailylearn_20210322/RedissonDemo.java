@@ -1,5 +1,6 @@
 package com.haozz.dailylearn.dailylearndetail.dailylearn202103.dailylearn_20210322;
 
+import cn.hutool.core.collection.CollectionUtil;
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +45,9 @@ public class RedissonDemo {
 
         Tuple2<Set<String>, Set<String>> tuple2 = lock(products.stream().map(Product::getBusinessKey).collect(Collectors.toSet()));
 
+        // 这个地方还应该判断 ，如果全部失败了 ，说明这个时候其他的操作量比较大，可以等待1秒后继续
+
+
         // 成功的部分，执行上架处理，并且在finally中释放锁
         try {
             onShelf(tuple2.getT1());
@@ -54,16 +58,19 @@ public class RedissonDemo {
         }
 
 
-        // 失败的部分 递归进行
-        List<Product> collect = products.stream().filter(i -> tuple2.getT2().stream().anyMatch(y -> Objects.equals(i.getBusinessKey(), y))).collect(Collectors.toList());
-        onShelf(collect);
+        if (CollectionUtil.isNotEmpty(tuple2.getT2())) {
+            // 失败的部分 递归进行
+            List<Product> collect = products.stream().filter(i -> tuple2.getT2().stream().anyMatch(y -> Objects.equals(i.getBusinessKey(), y))).collect(Collectors.toList());
+            onShelf(collect);
+        }
+
 
     }
 
     /**
      * 商品批量上架
      * <p>
-     * 在上架的过程中不允许对商品做其他操作，比如调整价格之类
+     * 在上架的过程中不允许对商品做其他操作，比如调整价格之类, 所以对商品加分布式锁
      */
     public Tuple2<Set<String>, Set<String>> lock(Set<String> businessKeys) {
 
@@ -115,7 +122,7 @@ public class RedissonDemo {
             String key = KEY_PROFIX + businessKey;
             RLock lock = redissonClient.getLock(key);
             // 释放锁之前，要校验这个锁是不是存在 并且 是上锁状态 并且 是被当前线程持有
-            if (lock == null && lock.isLocked() && lock.isHeldByCurrentThread()) {
+            if (lock != null && lock.isLocked() && lock.isHeldByCurrentThread()) {
                 lock.unlock();
             }
 
