@@ -5,6 +5,9 @@ package com.haozz.dailylearn.dailylearndetail.dailylearn202103.dailylearn_202103
  * 动态的给一个对象添加一些额外的功能。就增加功能来说，装饰器模式比生成子类更为灵活。
  * https://www.bilibili.com/video/BV1hp4y1D7MP
  *
+ * 装饰器模式的应用案例：Java I/O流
+ *
+ *
  * @author haozhezhe@yunquna.com
  * @date 9:58 AM 3/27/21
  */
@@ -48,7 +51,7 @@ class FirstRobot implements Robot {
  * 他装饰的对象，就是第一代机器人
  * 他装饰的对象的功能他都要有，在此之上扩展新的功能
  */
-class DecoratorRobot implements Robot{
+class DecoratorRobot implements Robot {
 
     /**
      * 引入他装饰的对象
@@ -57,6 +60,7 @@ class DecoratorRobot implements Robot{
 
     /**
      * 通过构造方法指定需要装饰的对象
+     *
      * @param robot 当前装饰器所装饰的对象
      */
     public DecoratorRobot(Robot robot) {
@@ -71,5 +75,13 @@ class DecoratorRobot implements Robot{
     @Override
     public void doSomething() {
         robot.doSomething();
+    }
+
+    /**
+     * 扩展功能
+     */
+    public void doMoreThing() {
+        robot.doSomething();
+        System.out.println("扫地");
     }
 }
