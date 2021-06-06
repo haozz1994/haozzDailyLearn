@@ -23,6 +23,7 @@ public class T01_Sync1 {
          * 前三项是对象头，最后一项是对齐信息，整个对象是Instance size16个字节
          * 前两项是mark Word，占8个字节
          * 第三项是class pointer
+         * 那实例数据去哪里了，难道说是因为这个Lock对象是空的所以没有打印出来实例数据？
          * 打印结果：
          *
          * com.haozz.dailylearn.dailylearndetail.dailylearn202004.dailylearn_20200414.T01_Sync1$Lock object internals:
