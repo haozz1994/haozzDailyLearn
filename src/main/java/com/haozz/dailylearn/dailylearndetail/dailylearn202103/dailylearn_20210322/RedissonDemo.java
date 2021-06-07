@@ -109,7 +109,9 @@ public class RedissonDemo {
             }
         }
 
-        return new Tuple2<>(successSet, failSet);
+//        return new Tuple2<>(successSet, failSet);
+        //Error:(112, 16) java: <T1,T2>Tuple2(T1,T2)在reactor.util.function.Tuple2中不是公共的; 无法从外部程序包中对其进行访问
+        return null;
     }
 
     public void onShelf(Set<String> businessKeys) {
