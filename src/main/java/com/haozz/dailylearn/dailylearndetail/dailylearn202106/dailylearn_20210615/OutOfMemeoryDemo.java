@@ -21,6 +21,7 @@ public class OutOfMemeoryDemo {
         List<Object> list = new ArrayList<>();
         int i = 0;
         int j = 0;
+        // 这个地方为什么会内存溢出？
         while (true) {
             list.add(new User((long) i++, UUID.randomUUID().toString()));
             new User((long) j--, UUID.randomUUID().toString());
