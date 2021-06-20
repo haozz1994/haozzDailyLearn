@@ -9,6 +9,10 @@ public class User {
     private int id;
     private String name;
 
+    /**
+     * 这里占用 100KB
+     * 1024的单位是字节B，
+     */
     byte[] a = new byte[1024*100];
 
     public User(){}

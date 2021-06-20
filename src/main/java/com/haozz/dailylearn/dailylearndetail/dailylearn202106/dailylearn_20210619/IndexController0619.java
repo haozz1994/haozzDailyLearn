@@ -29,6 +29,7 @@ public class IndexController0619 {
      */
     private ArrayList<User> queryUsers() {
         ArrayList<User> users = new ArrayList<>();
+        // 一次遍历生成500M，因为每个User大小是 100KB
         for (int i = 0; i < 5000; i++) {
             users.add(new User(i,"zhuge"));
         }
