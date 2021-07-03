@@ -1,8 +1,5 @@
 package com.haozz.dailylearn.dailylearndetail.dailylearn202103.dailylearn_20210320;
 
-import java.util.LinkedList;
-import java.util.List;
-
 /**
  * 单例模式 - 饿汉式
  *

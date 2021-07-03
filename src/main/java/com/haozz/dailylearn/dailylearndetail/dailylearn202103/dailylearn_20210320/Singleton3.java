@@ -26,7 +26,7 @@ public class Singleton3 {
     /**
      * 考虑这样一种场景：在多线程情况下，首次加载时，instance为空。
      * 此时A、B两个线程同时调用该方法，同时进行instance == null，判断结果都为true。
-     * 则A、B两个线程都会执行 instance = new Singleton3(); 也就是被实例化了两次， 这样就会有问题
+     * 则A、B两个线程都会执行 instance = new Singleton3(); 也就是被实例化了两次， 这样就会有问题，不符合单例的设定
      * <p>
      * 所以需要对这个方法进行加锁，synchronized同步，保证同一时刻只有一个线程可以执行这个方法，也就不会有上面这个问题。
      * <p>
@@ -45,12 +45,15 @@ public class Singleton3 {
 
     /**
      * 双重检查锁
-     *
+     * <p>
      * 为了解决上面的问题[1]，在这里减小同步的范围，不需要对整个方法进行synchronized
-     * 而是只在第一次实例化，也就是 instance == null 判断为true的时候，进行synchronized同步处理。在同步块中需要再次判断instance 是否被实例化过
+     * 而是只在第一次实例化，也就是 instance == null 判断为true的时候，进行synchronized同步处理。
+     *
+     * 在同步块中需要再次判断instance 是否被实例化过，因为：
      * 试想，两个线程同时走到 第一次 instance == null 判断地方，都为true，同时进入抢synchronized锁，A线程抢到了，执行完了实例化操作，释放锁之后B线程继续执行，到了synchronized中判断  instance == null 此时由于已经被实例化过了，所以不需要new了
      * 如果不加第二次判断，那么在第二个线程等待锁之后还会初始化，也会有问题
      * 这样的写法叫做双重检查锁
+     *
      * @return
      */
     public static Singleton3 getInstance1() {
@@ -66,7 +69,7 @@ public class Singleton3 {
 
 
     /**
-     * 继续思考，这样的代码还会有问题，需要对instance示例进行volatile修饰
+     * 继续思考，这样的代码还会有问题，需要对instance实例进行volatile修饰
      *
      * instance = new Singleton3();这一句代码可以拆解为3步:
      * 1.开辟出一块内存
